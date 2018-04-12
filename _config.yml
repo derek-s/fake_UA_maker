@@ -1,0 +1,126 @@
+OS:
+  Windows: [
+    "10.0",
+    "6.3",
+    "6.2",
+    "6.1"
+  ]
+  Linux: [
+    "Ubuntu",
+    "Linux"
+  ]
+  OSX:
+    - Sierra: [
+        "10.12",
+        "10.12.1",
+        "10.12.2",
+        "10.12.3",
+        "10.12.4",
+        "10.12.5",
+        "10.12.6"
+    ]
+    - HighSierra: [
+      "10.13",
+      "10.13.1",
+      "10.13.2",
+      "10.13.3"
+    ]
+Android:
+  HuaWei: [
+    "FRD-AL00 Build/HUAWEIFRD-AL00", 
+    "VTR-AL00 Build/HUAWEIVTR-AL00", 
+    "HUAWEI NXT-AL10 Build/HUAWEINXT-AL10", 
+    "EVA-AL00 Build/HUAWEIEVA-AL00",
+    "ALE-TL00 Build/HuaweiALE-TL00",
+    "PLK-AL10 Build/HONORPLK-AL10",
+    "WAS-AL00 Build/HUAWEIWAS-AL00",
+    "HUAWEI NXT-AL10 Build/HUAWEINXT-AL10",
+    "VIE-AL10 Build/HUAWEIVIE-AL10",
+    "STF-AL10 Build/HUAWEISTF-AL10",
+    "PRA-AL00 Build/HONORPRA-AL00",
+    "FRD-AL00 Build/HUAWEIFRD-AL00",
+    "KIW-TL00H Build/HONORKIW-TL00H",
+    "PLK-AL10 Build/HONORPLK-AL10",
+    "DUK-AL20 Build/HUAWEIDUK-AL20",
+    "KIW-CL00 Build/HONORKIW-CL00",
+    "PRA-AL00X Build/HONORPRA-AL00X"
+  ]
+  MI: [
+    "MI 4S Build/LMY47V",
+    "MI 5X Build/N2G47H",
+    "MIX Build/NRD90M",
+    "MI 4LTE Build/MMB29M",
+    "MI 6 Build/NMF26X",
+    "MI 5s Build/MXB48T",
+    "MI NOTE LTE Build/MMB29M",
+    "MI 5C Build/N2G47J",
+    "MI 5s Build/NRD90M"
+  ]
+  HM: [
+    "Redmi Note 4X Build/MRA58K",
+    "Redmi Note 4 Build/MRA58K",
+    "Redmi Pro Build/MRA58K",
+    "Redmi Note 3 Build/MMB29M"
+  ]
+  Sumsang: [
+    "SM-C7000 Build/MMB29M",
+    "SM-G9550 Build/NRD90M",
+    "SM-A7100 Build/MMB29M",
+    "SM-G9500 Build/NRD90M",
+    "SM-C5000 Build/MMB29M",
+    "SM-N935F Build/KTU84P",
+    "SM-G9300 Build/NRD90M",
+    "SM-C9000 Build/MMB29M",
+    "SM-G9280 Build/NRD90M",
+    "SM-A9000 Build/MMB29M",
+    "SM-N9200 Build/NRD90M",
+    "SM-A8000 Build/LMY47X",
+    "SM-A7100 Build/LMY47X"
+  ]
+  MX: [
+    "MX6 Build/MRA58K",
+    "MX5 Build/LMY47I",
+    "MX4 Pro Build/LMY48W",
+    "PRO 6 Build/MRA58K",
+    "m1 metal Build/LMY47I",
+    "m2 note Build/LMY47D"
+  ]
+  OPPO: [
+    "OPPO R11 Build/NMF26X",
+    "OPPO R9tm Build/LMY47I",
+    "OPPO R7sPlus Build/LMY47V",
+    "OPPO A57 Build/MMB29M",
+    "OPPO A37m Build/LMY47I",
+    "OPPO R9m Build/LMY47I",
+    "OPPO R9st Build/MMB29M",
+    "OPPO R7sm Build/LMY47V",
+    "OPPO R11t Build/NMF26X"
+  ]
+  VIVO: [
+    "Xplay5A Build/LMY47V",
+    "vivo X7 Build/LMY47V",
+    "vivo X6D Build/LMY47I",
+    "vivo X6A Build/LRX22G",
+    "vivo X6Plus D Build/LMY47I",
+    "vivo X9i Build/MMB29M",
+    "vivo X9Plus Build/MMB29M",
+    "vivo Y67A Build/MRA58K"
+  ]
+  OD: [
+    "OD105 Build/NMF26F",
+    "SM919 Build/MXB48T",
+    "SM801 Build/LMY47V"
+  ]
+AndroidOS: [
+  "5.0",
+  "5.1",
+  "6.0",
+  "7.0",
+  "7.1",
+  "8.0",
+  "8.1"
+]
+ChromeVer: [
+  "54",
+  "66"
+]
