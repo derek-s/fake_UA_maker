@@ -22,6 +22,7 @@ def random_Windows_Ver():
     rand_Ver = random.choice(config_OS_Windows)
     return rand_Ver
 
+
 def random_Chrome():
     config_Ver_range_low = int(config["ChromeVer"][0])
     config_Ver_range_high = int(config["ChromeVer"][1])
@@ -49,10 +50,30 @@ class fake_UA_maker:
             **{"WinVer": random_Windows_Ver(), "WebkitVer": random_WebkitVer(), "ChromeVer": random_Chrome()}
         )
 
+    def chrome_pc_linux(self):
+        ua_string = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/{WebkitVer} (KHTML, like Gecko)" \
+                    " Chrome/{ChromeVer} Safari/{WebkitVer}"
+        return ua_string.format(
+            **{"ChromeVer": random_Chrome(), "WebkitVer": random_WebkitVer()}
+        )
 
+    def internet_explorer(self):
+        ua_list = [
+            'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko',
+            'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv 11.0) like Gecko',
+            'Mozilla/5.0 (compatible; WOW64; MSIE 10.0; Windows NT 6.2)',
+            'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)',
+            'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)',
+            'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)',
+            'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)',
+            'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
+            'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)'
 
+        ]
+        rand_UA_String = random.choice(ua_list)
+        return rand_UA_String
 
 
 if __name__ == "__main__":
-    UAString = fake_UA_maker().chrome_pc_windows()
+    UAString = fake_UA_maker().chrome_pc_linux()
     print(UAString)
