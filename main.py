@@ -16,13 +16,18 @@ with open("_config.yml", "r", encoding="utf-8") as config_file:
 config_file.close()
 
 # random Windows Version
-
 def random_Windows_Ver():
     config_OS_Windows = config["OS"]["Windows"]
     rand_Ver = random.choice(config_OS_Windows)
     return rand_Ver
 
 
+# random Mac Version
+def random_Mac_Ver():
+    config_OS_Mac = config["OS"][""]
+
+
+# random Chrome Version
 def random_Chrome():
     config_Ver_range_low = int(config["ChromeVer"][0])
     config_Ver_range_high = int(config["ChromeVer"][1])
@@ -34,12 +39,15 @@ def random_Chrome():
     )
     return rand_Ver
 
+# random Webkit/Safari Version
 def random_WebkitVer():
     rand_Ver = '{0}.{1}'.format(
         random.randint(400, 999),
         random.randint(0, 99)
     )
     return rand_Ver
+
+
 
 
 class fake_UA_maker:
@@ -55,6 +63,13 @@ class fake_UA_maker:
                     " Chrome/{ChromeVer} Safari/{WebkitVer}"
         return ua_string.format(
             **{"ChromeVer": random_Chrome(), "WebkitVer": random_WebkitVer()}
+        )
+
+    def chrome_mac(self):
+        ua_string = "Mozilla/5.0 (Macintosh; Intel Mac OS X {MacVer}) AppleWebKit/{WebkitVer} " \
+                    "(KHTML, like Gecko) Chrome/{ChromeVer} Safari/{WebkitVer}"
+        return ua_string.format(
+            **{}
         )
 
     def internet_explorer(self):
