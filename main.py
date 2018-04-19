@@ -24,7 +24,9 @@ def random_Windows_Ver():
 
 # random Mac Version
 def random_Mac_Ver():
-    config_OS_Mac = config["OS"][""]
+    config_OS_Mac = config["OS"]["OSX"]
+    rand_Ver = random.choice(config_OS_Mac)
+    return rand_Ver
 
 
 # random Chrome Version
@@ -69,7 +71,7 @@ class fake_UA_maker:
         ua_string = "Mozilla/5.0 (Macintosh; Intel Mac OS X {MacVer}) AppleWebKit/{WebkitVer} " \
                     "(KHTML, like Gecko) Chrome/{ChromeVer} Safari/{WebkitVer}"
         return ua_string.format(
-            **{}
+            **{"MacVer": random_Mac_Ver(), "ChromeVer": random_Chrome(), "WebkitVer": random_WebkitVer()}
         )
 
     def internet_explorer(self):
@@ -90,5 +92,5 @@ class fake_UA_maker:
 
 
 if __name__ == "__main__":
-    UAString = fake_UA_maker().chrome_pc_linux()
+    UAString = fake_UA_maker().chrome_mac()
     print(UAString)
