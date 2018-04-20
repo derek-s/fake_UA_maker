@@ -30,7 +30,7 @@ def random_Mac_Ver():
 
 
 # random Chrome Version
-def random_Chrome():
+def random_Chrome_Ver():
     config_Ver_range_low = int(config["ChromeVer"][0])
     config_Ver_range_high = int(config["ChromeVer"][1])
     rand_Ver = '{0}.{1}.{2}.{3}'.format(
@@ -50,6 +50,14 @@ def random_WebkitVer():
     return rand_Ver
 
 
+def random_Firefox_Ver():
+    config_Ver_range_low = int(config["FirefoxVer"][0])
+    config_Ver_range_high = int(config["FirefoxVer"][1])
+    rand_Ver = '{}.0'.format(random.randint(
+        config_Ver_range_low, config_Ver_range_high
+    ))
+    return rand_Ver
+
 
 
 class fake_UA_maker:
@@ -57,21 +65,21 @@ class fake_UA_maker:
         ua_string = "Mozilla/5.0 (Windows NT {WinVer}; Win64; x64) AppleWebKit/{WebkitVer} " \
                     "(KHTML, like Gecko) Chrome/{ChromeVer} Safari/{WebkitVer}"
         return ua_string.format(
-            **{"WinVer": random_Windows_Ver(), "WebkitVer": random_WebkitVer(), "ChromeVer": random_Chrome()}
+            **{"WinVer": random_Windows_Ver(), "WebkitVer": random_WebkitVer(), "ChromeVer": random_Chrome_Ver()}
         )
 
     def chrome_pc_linux(self):
         ua_string = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/{WebkitVer} (KHTML, like Gecko)" \
                     " Chrome/{ChromeVer} Safari/{WebkitVer}"
         return ua_string.format(
-            **{"ChromeVer": random_Chrome(), "WebkitVer": random_WebkitVer()}
+            **{"ChromeVer": random_Chrome_Ver(), "WebkitVer": random_WebkitVer()}
         )
 
     def chrome_mac(self):
         ua_string = "Mozilla/5.0 (Macintosh; Intel Mac OS X {MacVer}) AppleWebKit/{WebkitVer} " \
                     "(KHTML, like Gecko) Chrome/{ChromeVer} Safari/{WebkitVer}"
         return ua_string.format(
-            **{"MacVer": random_Mac_Ver(), "ChromeVer": random_Chrome(), "WebkitVer": random_WebkitVer()}
+            **{"MacVer": random_Mac_Ver(), "ChromeVer": random_Chrome_Ver(), "WebkitVer": random_WebkitVer()}
         )
 
     def internet_explorer(self):
@@ -90,7 +98,24 @@ class fake_UA_maker:
         rand_UA_String = random.choice(ua_list)
         return rand_UA_String
 
+    def firefox_pc_windows(self):
+        ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64; rv:{FirefoxVer}) Gecko/20100101 Firefox/{FirefoxVer}"
+        return ua_string.format(
+            **{"WinVer": random_Windows_Ver(), "FirefoxVer": random_Firefox_Ver()}
+        )
+
+    def firefox_pc_linux(self):
+        ua_string = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:{FirefoxVer}) Gecko/20100101 Firefox/{FirefoxVer}"
+        return ua_string.format(
+            **{"FirefoxVer": random_Firefox_Ver()}
+        )
+
+    def firefox_mac(self):
+        ua_string = "Mozilla/5.0 (Macintosh; Intel Mac OS X {MacVer}; rv:{FirefoxVer}) Gecko/20100101 Firefox/{FirefoxVer}"
+        return ua_string.format(
+            **{"MacVer": random_Mac_Ver(), "FirefoxVer": random_Firefox_Ver()}
+        )
 
 if __name__ == "__main__":
-    UAString = fake_UA_maker().chrome_mac()
+    UAString = fake_UA_maker().firefox_mac()
     print(UAString)
