@@ -64,6 +64,18 @@ def random_qihu_Ver():
     rand_Ver = random.choice(['EE', 'SE'])
     return rand_Ver
 
+# random 2345Explorer Version
+def random_2345_Ver():
+    config_Ver_range_low = int(config["Brower2345V"][0])
+    config_Ver_range_high = int(config["Brower2345V"][1])
+    rand_Ver = '{0}.{1}.{2}.{3}'.format(
+        random.randint(config_Ver_range_low, config_Ver_range_high),
+        random.randint(0, 9),
+        random.randint(0, 9),
+        random.randint(0, 99999)
+    )
+    return rand_Ver
+
 
 class fake_UA_maker:
     def chrome_pc_windows(self):
@@ -130,16 +142,33 @@ class fake_UA_maker:
     def qihu360(self):
         ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
                     "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
-                    "Chrome/{ChromeVer} Safari/{WebkitVer} QIHU 360{Brower_360}"
+                    "Chrome/{ChromeVer} Safari/{WebkitVer} QIHU 360{Brower360Ver}"
 
         return ua_string.format(
-            **{"WinVer": random_Windows_Ver(),
-               "ChromeVer": random_Chrome_Ver(),
-               "WebkitVer": random_WebkitVer(),
-               "Brower_360": random_qihu_Ver()}
+            **{
+                "WinVer": random_Windows_Ver(),
+                "ChromeVer": random_Chrome_Ver(),
+                "WebkitVer": random_WebkitVer(),
+                "Brower360Ver": random_qihu_Ver()}
+        )
+
+    # 2345 Explorer
+    def Brower2345(self):
+        ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Chrome/{ChromeVer} Safari/537.36 " \
+                    "2345Explorer/{Brower2345Ver}"
+        return ua_string.format(
+            **{
+                "WinVer": random_Windows_Ver(),
+                "WebkitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "Brower2345Ver": random_2345_Ver()
+            }
         )
 
 
+
 if __name__ == "__main__":
-    UAString = fake_UA_maker().qihu360()
+    UAString = fake_UA_maker().Brower2345()
     print(UAString)
