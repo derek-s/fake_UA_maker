@@ -142,7 +142,8 @@ class fake_UA_maker:
     def qihu360(self):
         ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
                     "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
-                    "Chrome/{ChromeVer} Safari/{WebkitVer} QIHU 360{Brower360Ver}"
+                    "Chrome/{ChromeVer} " \
+                    "Safari/{WebkitVer} QIHU 360{Brower360Ver}"
 
         return ua_string.format(
             **{
@@ -167,8 +168,20 @@ class fake_UA_maker:
             }
         )
 
+    def liebao(self):
+        ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Chrome/{ChromeVer} " \
+                    "Safari/{WebkitVer} LBBROWSER"
 
+        return ua_string.format(
+            **{
+                "WinVer": random_Windows_Ver(),
+                "WebkitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+            }
+        )
 
 if __name__ == "__main__":
-    UAString = fake_UA_maker().Brower2345()
+    UAString = fake_UA_maker().liebao()
     print(UAString)
