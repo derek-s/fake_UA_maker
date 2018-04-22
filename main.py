@@ -60,7 +60,7 @@ def random_Firefox_Ver():
     return rand_Ver
 
 # random 360Brower Version
-def random_qihu_Ver():
+def random_Qihu_Ver():
     rand_Ver = random.choice(['EE', 'SE'])
     return rand_Ver
 
@@ -76,6 +76,14 @@ def random_2345_Ver():
     )
     return rand_Ver
 
+
+def random_Sougou_Ver():
+    rand_Ver = 'SE {0}.X MetaSr {1}.{2}'.format(
+        random.randint(1, 9),
+        random.randint(1, 9),
+        random.randint(1, 9)
+    )
+    return rand_Ver
 
 class fake_UA_maker:
     def chrome_pc_windows(self):
@@ -150,7 +158,7 @@ class fake_UA_maker:
                 "WinVer": random_Windows_Ver(),
                 "ChromeVer": random_Chrome_Ver(),
                 "WebkitVer": random_WebkitVer(),
-                "Brower360Ver": random_qihu_Ver()}
+                "Brower360Ver": random_Qihu_Ver()}
         )
 
     # 2345 Explorer
@@ -182,6 +190,21 @@ class fake_UA_maker:
             }
         )
 
+    def sougou(self):
+        ua_string = "ozilla/5.0 (Windows NT {WinVer}; WOW64) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Chrome/{ChromeVer} " \
+                    "Safari/{WebkitVer} {SougouVer}"
+        return ua_string.format(
+            **{
+                "WinVer": random_Windows_Ver(),
+                "WebkitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "SougouVer": random_Sougou_Ver()
+            }
+        )
+
+
 if __name__ == "__main__":
-    UAString = fake_UA_maker().liebao()
+    UAString = fake_UA_maker().sougou()
     print(UAString)
