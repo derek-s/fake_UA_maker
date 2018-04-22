@@ -87,7 +87,7 @@ def random_Sougou_Ver():
     return rand_Ver
 
 
-# randmon qqbrower Version
+# random qqbrower Version
 def random_QQbrower_Ver():
     rand_Ver = '{0}.{1}.{2}.{3}'.format(
         random.randint(1, 10),
@@ -96,6 +96,17 @@ def random_QQbrower_Ver():
         random.randint(0, 999)
     )
     return rand_Ver
+
+
+# random baiduBrower Version
+def random_Baidu_Ver():
+    rand_Ver = '{0}.{1}'.format(
+        random.randint(1, 99),
+        random.randint(1, 99)
+    )
+    return rand_Ver
+
+
 
 class fake_UA_maker:
     def chrome_pc_windows(self):
@@ -233,6 +244,21 @@ class fake_UA_maker:
             }
         )
 
+    def baidubrower(self):
+        ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Chrome/{ChromeVer} " \
+                    "BIDUBrowser/{BaiduVer} " \
+                    "Safari/{WebkitVer}"
+        return ua_string.format(
+            **{
+                "WinVer": random_Windows_Ver(),
+                "WebkitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "BaiduVer": random_Baidu_Ver()
+            }
+        )
+
 if __name__ == "__main__":
-    UAString = fake_UA_maker().qqbrower()
+    UAString = fake_UA_maker().baidubrower()
     print(UAString)
