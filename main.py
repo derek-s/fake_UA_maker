@@ -77,11 +77,23 @@ def random_2345_Ver():
     return rand_Ver
 
 
+# random sougou Version
 def random_Sougou_Ver():
     rand_Ver = 'SE {0}.X MetaSr {1}.{2}'.format(
         random.randint(1, 9),
         random.randint(1, 9),
         random.randint(1, 9)
+    )
+    return rand_Ver
+
+
+# randmon qqbrower Version
+def random_QQbrower_Ver():
+    rand_Ver = '{0}.{1}.{2}.{3}'.format(
+        random.randint(1, 10),
+        random.randint(0, 99),
+        random.randint(0, 9999),
+        random.randint(0, 999)
     )
     return rand_Ver
 
@@ -205,6 +217,22 @@ class fake_UA_maker:
         )
 
 
+    def qqbrower(self):
+        ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Chrome/{ChromeVer} " \
+                    "Safari/{WebkitVer} " \
+                    "Core/{QQbrowerVer} QQBrowser/{QQbrowerVer}"
+
+        return ua_string.format(
+            **{
+                "WinVer": random_Windows_Ver(),
+                "WebkitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "QQbrowerVer": random_QQbrower_Ver()
+            }
+        )
+
 if __name__ == "__main__":
-    UAString = fake_UA_maker().sougou()
+    UAString = fake_UA_maker().qqbrower()
     print(UAString)
