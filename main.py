@@ -9,11 +9,14 @@
 import yaml
 import random
 
-# read yml config file
 
+# read yml config file
 with open("_config.yml", "r", encoding="utf-8") as config_file:
     config = yaml.load(config_file)
 config_file.close()
+
+net_type = ['4G', 'WIFI']
+
 
 # random Windows Version
 def random_Windows_Ver():
@@ -27,6 +30,12 @@ def random_Mac_Ver():
     config_OS_Mac = config["OS"]["OSX"]
     rand_Ver = random.choice(config_OS_Mac)
     return rand_Ver
+
+
+# random Android Phone
+def random_Android():
+    config_Android_list = config["Android"]
+    print(config_Android_list)
 
 
 # random Chrome Version
@@ -287,5 +296,6 @@ class fake_UA_maker:
 
 
 if __name__ == "__main__":
-    UAString = fake_UA_maker().maxthon()
-    print(UAString)
+    # UAString = fake_UA_maker().maxthon()
+    # print(UAString)
+    random_Android()
