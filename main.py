@@ -8,12 +8,14 @@
 
 import yaml
 import random
+import string
 
 
 # read yml config file
 with open("_config.yml", "r", encoding="utf-8") as config_file:
     config = yaml.load(config_file)
 config_file.close()
+
 
 net_type = ['4G', 'WIFI']
 
@@ -35,7 +37,28 @@ def random_Mac_Ver():
 # random Android Phone
 def random_Android():
     config_Android_list = config["Android"]
-    print(config_Android_list)
+    rand_Phone = random.choice(config_Android_list)
+    return rand_Phone
+
+
+# random Android OS Version
+def random_Android_OS():
+    config_Android_OS = config["AndroidOS"]
+    rand_Ver = random.choice(config_Android_OS)
+    return rand_Ver
+
+
+# random iOS Version
+def random_iOS_Version():
+    config_iOS_Ver = config["iOS"]
+    rand_Ver = random.choice(config_iOS_Ver)
+    return rand_Ver
+
+
+# random iPhone MoblieKey
+def random_iPhoneKey(length=8):
+    rand_Key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(length))
+    return rand_Key
 
 
 # random Chrome Version
@@ -49,6 +72,7 @@ def random_Chrome_Ver():
         random.randint(10, 99)
     )
     return rand_Ver
+
 
 # random Webkit/Safari Version
 def random_WebkitVer():
@@ -68,10 +92,12 @@ def random_Firefox_Ver():
     ))
     return rand_Ver
 
+
 # random 360Brower Version
 def random_Qihu_Ver():
     rand_Ver = random.choice(['EE', 'SE'])
     return rand_Ver
+
 
 # random 2345Explorer Version
 def random_2345_Ver():
@@ -153,8 +179,38 @@ class fake_UA_maker:
                     "Chrome/{ChromeVer} " \
                     "Safari/{WebkitVer}"
         return ua_string.format(
-            **{"MacVer": random_Mac_Ver(), "ChromeVer": random_Chrome_Ver(), "WebkitVer": random_WebkitVer()}
+            **{
+                "MacVer": random_Mac_Ver(),
+                "ChromeVer": random_Chrome_Ver(),
+                "WebkitVer": random_WebkitVer()}
         )
+
+    def chrome_wap_android(self):
+        ua_string = "Mozilla/5.0 (Linux; Android {AndroidVersion}; {AndroidPhone}) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Chrome/{ChromeVer} Mobile Safari/{WebkitVer}"
+        return ua_string.format(
+            **{
+                "AndroidVersion": random_Android_OS(),
+                "AndroidPhone": random_Android(),
+                "WebkitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver()
+            }
+        )
+
+    def chrome_wap_iPhone(self):
+        ua_string = "Mozilla/5.0 (iPhone; CPU iPhone OS {iOSVer} like Mac OS X) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "CriOS/{ChromeVer} Mobile/{iPhoneKey} Safari/{WebkitVer}"
+        return ua_string.format(
+            **{
+                "iOSVer": random_iOS_Version(),
+                "iPhoneKey": random_iPhoneKey(8),
+                "WebkitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver()
+            }
+        )
+
 
     def internet_explorer(self):
         ua_list = [
@@ -296,6 +352,6 @@ class fake_UA_maker:
 
 
 if __name__ == "__main__":
-    # UAString = fake_UA_maker().maxthon()
-    # print(UAString)
-    random_Android()
+    UAString = fake_UA_maker().chrome_wap_iPhone()
+    print(UAString)
+    # print(random_Android_OS())
