@@ -107,6 +107,17 @@ def random_Baidu_Ver():
     return rand_Ver
 
 
+# random Maxthon Version
+def random_Maxthon_Ver():
+    rand_Ver = '{0}.{1}.{2}.{3}'.format(
+        random.randint(5, 9),
+        random.randint(0, 9),
+        random.randint(0, 9),
+        random.randint(0, 9999)
+    )
+    return rand_Ver
+
+
 
 class fake_UA_maker:
     def chrome_pc_windows(self):
@@ -259,6 +270,22 @@ class fake_UA_maker:
             }
         )
 
+    def maxthon(self):
+        ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Chrome/{ChromeVer} " \
+                    "Safari{WebkitVer} " \
+                    "Maxthon/{MaxthonVer}"
+        return ua_string.format(
+            **{
+                "WinVer": random_Windows_Ver(),
+                "WebkitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "MaxthonVer": random_Maxthon_Ver()
+            }
+        )
+
+
 if __name__ == "__main__":
-    UAString = fake_UA_maker().baidubrower()
+    UAString = fake_UA_maker().maxthon()
     print(UAString)
