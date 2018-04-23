@@ -19,7 +19,7 @@ OS:
         "10.13.3"
   ]
 Android:
-  HuaWei: [
+  [
     "FRD-AL00 Build/HUAWEIFRD-AL00", 
     "VTR-AL00 Build/HUAWEIVTR-AL00", 
     "HUAWEI NXT-AL10 Build/HUAWEINXT-AL10", 
@@ -36,9 +36,7 @@ Android:
     "PLK-AL10 Build/HONORPLK-AL10",
     "DUK-AL20 Build/HUAWEIDUK-AL20",
     "KIW-CL00 Build/HONORKIW-CL00",
-    "PRA-AL00X Build/HONORPRA-AL00X"
-  ]
-  MI: [
+    "PRA-AL00X Build/HONORPRA-AL00X",
     "MI 4S Build/LMY47V",
     "MI 5X Build/N2G47H",
     "MIX Build/NRD90M",
@@ -47,15 +45,11 @@ Android:
     "MI 5s Build/MXB48T",
     "MI NOTE LTE Build/MMB29M",
     "MI 5C Build/N2G47J",
-    "MI 5s Build/NRD90M"
-  ]
-  HM: [
+    "MI 5s Build/NRD90M",
     "Redmi Note 4X Build/MRA58K",
     "Redmi Note 4 Build/MRA58K",
     "Redmi Pro Build/MRA58K",
-    "Redmi Note 3 Build/MMB29M"
-  ]
-  Sumsang: [
+    "Redmi Note 3 Build/MMB29M",
     "SM-C7000 Build/MMB29M",
     "SM-G9550 Build/NRD90M",
     "SM-A7100 Build/MMB29M",
@@ -68,17 +62,13 @@ Android:
     "SM-A9000 Build/MMB29M",
     "SM-N9200 Build/NRD90M",
     "SM-A8000 Build/LMY47X",
-    "SM-A7100 Build/LMY47X"
-  ]
-  MX: [
+    "SM-A7100 Build/LMY47X",
     "MX6 Build/MRA58K",
     "MX5 Build/LMY47I",
     "MX4 Pro Build/LMY48W",
     "PRO 6 Build/MRA58K",
     "m1 metal Build/LMY47I",
-    "m2 note Build/LMY47D"
-  ]
-  OPPO: [
+    "m2 note Build/LMY47D",
     "OPPO R11 Build/NMF26X",
     "OPPO R9tm Build/LMY47I",
     "OPPO R7sPlus Build/LMY47V",
@@ -87,9 +77,7 @@ Android:
     "OPPO R9m Build/LMY47I",
     "OPPO R9st Build/MMB29M",
     "OPPO R7sm Build/LMY47V",
-    "OPPO R11t Build/NMF26X"
-  ]
-  VIVO: [
+    "OPPO R11t Build/NMF26X",
     "Xplay5A Build/LMY47V",
     "vivo X7 Build/LMY47V",
     "vivo X6D Build/LMY47I",
@@ -97,9 +85,7 @@ Android:
     "vivo X6Plus D Build/LMY47I",
     "vivo X9i Build/MMB29M",
     "vivo X9Plus Build/MMB29M",
-    "vivo Y67A Build/MRA58K"
-  ]
-  OD: [
+    "vivo Y67A Build/MRA58K",
     "OD105 Build/NMF26F",
     "SM919 Build/MXB48T",
     "SM801 Build/LMY47V"
@@ -124,4 +110,25 @@ FirefoxVer: [
 Brower2345V: [
   "4",
   "7"
+]
+iOS: [
+  "9_3_5",
+  "10_3",
+  "10_3_1",
+  "10_3_2",
+  "10_3_3",
+  "11_0",
+  "11_0_1",
+  "11_0_2",
+  "11_0_3",
+  "11_1",
+  "11_1_1",
+  "11_1_2",
+  "11_2",
+  "11_2.1",
+  "11_2_5",
+  "11_3"
+]
+weChat: [
+  "6.6.6"
 ]

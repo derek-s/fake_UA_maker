@@ -211,7 +211,6 @@ class fake_UA_maker:
             }
         )
 
-
     def internet_explorer(self):
         ua_list = [
             'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko',
@@ -275,6 +274,7 @@ class fake_UA_maker:
             }
         )
 
+    # liebao Brower
     def liebao(self):
         ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
                     "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
@@ -302,7 +302,6 @@ class fake_UA_maker:
                 "SougouVer": random_Sougou_Ver()
             }
         )
-
 
     def qqbrower(self):
         ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
@@ -350,8 +349,41 @@ class fake_UA_maker:
             }
         )
 
+    def wechat_Android(self):
+        ua_string = "Mozilla/5.0 (Linux; Android {AndroidVersion}; {AndroidPhone}) " \
+                    "AppleWebKit/{WebKitVer} (KHTML, like Gecko) Version/4.0 " \
+                    "Chrome/{ChromeVer} MQQBrowser/6.2 TBS/{TBS} Mobile Safari/{WebKitVer} " \
+                    "MicroMessenger/{weChat}.{weChatsmall}(0x{weChatKey}) NetType/{NetType} Language/zh_CN"
+        return ua_string.format(
+            **{
+                "AndroidVersion": random_Android_OS(),
+                "AndroidPhone": random_Android(),
+                "WebKitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "TBS": str(random.randint(1, 999999)).zfill(6),
+                "weChat": config["weChat"][0],
+                "weChatsmall": str(random.randint(1, 9999)),
+                "weChatKey": str(''.join(random.choice("0123456789abcdef") for _ in range(8))),
+                "NetType": str(random.choice(net_type))
+            }
+        )
+
+    def wechat_iPhone(self):
+        ua_string = "Mozilla/5.0 (iPhone; CPU iPhone OS {iOSVer} like Mac OS X) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Mobile/{Mobile} " \
+                    "MicroMessenger/{weChat} NetType/{NetType} Language/zh_CN"
+        return ua_string.format(
+            **{
+                "iOSVer": random_iOS_Version(),
+                "WebkitVer": random_WebkitVer(),
+                "Mobile": str(''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))),
+                "weChat": config["weChat"][0],
+                "NetType": str(random.choice(net_type))
+            }
+        )
 
 if __name__ == "__main__":
-    UAString = fake_UA_maker().chrome_wap_iPhone()
+    UAString = fake_UA_maker().wechat_iPhone()
     print(UAString)
     # print(random_Android_OS())
