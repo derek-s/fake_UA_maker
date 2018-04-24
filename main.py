@@ -9,7 +9,7 @@
 import yaml
 import random
 import string
-
+import time
 
 # read yml config file
 with open("_config.yml", "r", encoding="utf-8") as config_file:
@@ -153,6 +153,41 @@ def random_Maxthon_Ver():
     return rand_Ver
 
 
+# random UC Version
+def random_UC_Ver():
+    rand_Ver = '{0}.{1}.{2}.{3}'.format(
+        random.randint(5, 15),
+        random.randint(0, 9),
+        random.randint(0, 9),
+        random.randint(0, 999)
+    )
+    return rand_Ver
+
+
+# random MQQ Version
+def random_MQQ_Ver():
+    rand_Ver = '{0}.{1}.{2}'.format(
+        random.randint(7, 9),
+        random.randint(1, 9),
+        random.randint(0, 99)
+    )
+    return rand_Ver
+
+def random_MBaidu_Ver():
+    rand_Ver = '{0}.{1}.{2}.{3}'.format(
+        random.randint(7, 15),
+        random.randint(0, 9),
+        random.randint(0, 9),
+        random.randint(0, 99)
+    )
+    return rand_Ver
+
+def random_MBaidu_T():
+    rand_Ver = '{0}.{1}'.format(
+        random.randint(7, 9),
+        random.randint(0, 9)
+    )
+    return rand_Ver
 
 class fake_UA_maker:
     def chrome_pc_windows(self):
@@ -185,7 +220,7 @@ class fake_UA_maker:
                 "WebkitVer": random_WebkitVer()}
         )
 
-    def chrome_wap_android(self):
+    def mobile_chrome_android(self):
         ua_string = "Mozilla/5.0 (Linux; Android {AndroidVersion}; {AndroidPhone}) " \
                     "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
                     "Chrome/{ChromeVer} Mobile Safari/{WebkitVer}"
@@ -198,7 +233,7 @@ class fake_UA_maker:
             }
         )
 
-    def chrome_wap_iPhone(self):
+    def mobile_chrome_iPhone(self):
         ua_string = "Mozilla/5.0 (iPhone; CPU iPhone OS {iOSVer} like Mac OS X) " \
                     "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
                     "CriOS/{ChromeVer} Mobile/{iPhoneKey} Safari/{WebkitVer}"
@@ -242,6 +277,21 @@ class fake_UA_maker:
         ua_string = "Mozilla/5.0 (Macintosh; Intel Mac OS X {MacVer}; rv:{FirefoxVer}) Gecko/20100101 Firefox/{FirefoxVer}"
         return ua_string.format(
             **{"MacVer": random_Mac_Ver(), "FirefoxVer": random_Firefox_Ver()}
+        )
+
+    def safari_mac(self):
+        ua_string = "Mozilla/5.0 (Macintosh; Intel Mac OS X {MacVer} " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Version/{SafariVer} Safari/{WebkitVer}"
+        return ua_string.format(
+            **{
+                "MacVer": random_Mac_Ver(),
+                "WebkitVer": random_WebkitVer(),
+                "SafariVer": '{0}.{1}'.format(
+                    random.randint(10, 11),
+                    random.randint(0, 9)
+                )
+            }
         )
 
     # 360se/ee
@@ -290,7 +340,7 @@ class fake_UA_maker:
         )
 
     def sougou(self):
-        ua_string = "ozilla/5.0 (Windows NT {WinVer}; WOW64) " \
+        ua_string = "Mozilla/5.0 (Windows NT {WinVer}; WOW64) " \
                     "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
                     "Chrome/{ChromeVer} " \
                     "Safari/{WebkitVer} {SougouVer}"
@@ -377,13 +427,189 @@ class fake_UA_maker:
             **{
                 "iOSVer": random_iOS_Version(),
                 "WebkitVer": random_WebkitVer(),
-                "Mobile": str(''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))),
+                "Mobile": random_iPhoneKey(6),
                 "weChat": config["weChat"][0],
                 "NetType": str(random.choice(net_type))
             }
         )
 
+    def ucbrower_Android(self):
+        # Android only
+        ua_string = "Mozilla/5.0 (Linux; U; Android {AndroidVersion}; {AndroidPhone}) " \
+                    "AppleWebKit/{WebKitVer} (KHTML, like Gecko) Version/4.0 " \
+                    "Chrome/{ChromeVer} " \
+                    "UCBrowser/{UCVer} Mobile Safari/{WebKitVer}"
+        return ua_string.format(
+            **{
+                "AndroidVersion": random_Android_OS(),
+                "AndroidPhone": random_Android(),
+                "WebKitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "UCVer": random_UC_Ver()
+            }
+        )
+
+    def mobile_QQ_Android(self):
+        ua_string = "Mozilla/5.0 (Linux; U; Android {AndroidVersion}; {AndroidPhone}) " \
+                    "AppleWebKit/{WebKitVer} (KHTML, like Gecko)Version/4.0 " \
+                    "Chrome/{ChromeVer} " \
+                    "MQQBrowser/{MQQBrowser} Mobile Safari/{WebKitVer}"
+        return ua_string.format(
+            **{
+                "AndroidVersion": random_Android_OS(),
+                "AndroidPhone": random_Android(),
+                "WebKitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "MQQBrowser": random_MQQ_Ver()
+            }
+        )
+
+    def mobile_QQ_iPhone(self):
+        ua_string = "Mozilla/5.0 (iPhone; CPU iPhone OS {iOSVer} like Mac OS X) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) Version/10.0 " \
+                    "MQQBrowser/{MQQBrowser} Mobile/{Mobile} " \
+                    "Safari/{WebkitVer} MttCustomUA/2 QBWebViewType/1 WKType/1"
+        return ua_string.format(
+            **{
+                "iOSVer": random_iOS_Version(),
+                "WebkitVer": random_WebkitVer(),
+                "Mobile": random_iPhoneKey(6),
+                "MQQBrowser": random_MQQ_Ver(),
+                "NetType": str(random.choice(net_type))
+            }
+        )
+
+    def mobile_baidu_Android(self):
+        ua_string = "Mozilla/5.0 (Linux; Android {AndroidVersion}; {AndroidPhone}) " \
+                    "AppleWebKit/{WebKitVer} (KHTML, like Gecko) Version/4.0 " \
+                    "Chrome/{ChromeVer} Mobile Safari/{WebKitVer} T7/{baidu_T} " \
+                    "baiduboxapp/{baiduVer} (Baidu; P1 {AndroidVersion})"
+
+        return ua_string.format(
+            **{
+                "AndroidVersion": random_Android_OS(),
+                "AndroidPhone": random_Android(),
+                "WebKitVer": random_WebkitVer(),
+                "ChromeVer": random_Chrome_Ver(),
+                "baidu_T": random_MBaidu_T(),
+                "baiduVer": random_MBaidu_Ver()
+            }
+        )
+
+    def mobile_baidu_iPhone(self):
+        ua_string = "Mozilla/5.0 (iPhone; CPU iPhone OS {iOSVer} like Mac OS X) " \
+                    "AppleWebKit/{WebkitVer} (KHTML, like Gecko) " \
+                    "Mobile/{Mobile} search%2F1.0 " \
+                    "baiduboxapp/{baiduAppiOS}/{baiduAppPi}_2C2%258enohPi/1099a/{key}/1"
+        return ua_string.format(
+            **{
+                "iOSVer": random_iOS_Version(),
+                "WebkitVer": random_WebkitVer(),
+                "Mobile": random_iPhoneKey(6),
+                "baiduAppiOS": "0_{0}.{1}.{2}.{3}_enohpi_{4}_{5}".format(
+                    random.randint(1, 15),
+                    random.randint(0, 9),
+                    random.randint(0, 9),
+                    random.randint(0, 9),
+                    random.randint(999, 9999),
+                    random.randint(1, 999)
+                ),
+                "baiduAppPi": "{0}.{1}.{2}".format(
+                    random.randint(0, 9),
+                    random.randint(0, 9),
+                    str(random.randint(0, 9)).zfill(2)
+                ),
+                "key": random_iPhoneKey(51)
+            }
+        )
+
+    def pc_Windows(self):
+        ua = random.choice([
+            self.chrome_pc_windows(),
+            self.baidubrower(),
+            self.Brower2345(),
+            self.firefox_pc_windows(),
+            self.sougou(),
+            self.internet_explorer(),
+            self.liebao(),
+            self.maxthon(),
+            self.qihu360(),
+            self.qqbrower()
+        ])
+        return ua
+
+    def pc_Linux(self):
+        ua = random.choice([
+            self.chrome_pc_linux(),
+            self.firefox_pc_linux()
+        ])
+        return ua
+
+    def pc_mac(self):
+        ua = random.choice([
+            self.chrome_mac(),
+            self.firefox_mac(),
+            self.safari_mac()
+        ])
+        return ua
+
+    def android(self):
+        ua = random.choice([
+            self.mobile_chrome_android(),
+            self.ucbrower_Android(),
+            self.mobile_QQ_Android(),
+            self.mobile_baidu_Android()
+        ])
+
+        return ua
+
+    def iOS(self):
+        ua = random.choice([
+            self.mobile_QQ_iPhone(),
+            self.mobile_baidu_iPhone(),
+            self.mobile_chrome_iPhone()
+        ])
+        return ua
+
+    def wechat(self):
+        ua = random.choice([
+            self.wechat_Android(),
+            self.wechat_iPhone()
+        ])
+        return ua
+
+    def random_PC(self):
+        ua = random.choice([
+            self.pc_Linux(),
+            self.pc_mac(),
+            self.pc_Windows()
+        ])
+        return ua
+
+    def random_Mobile(self):
+        ua = random.choice([
+            self.android(),
+            self.iOS()
+        ])
+        return ua
+
+    def random_weChat(self):
+        ua = random.choice([
+            self.wechat_iPhone(),
+            self.wechat_Android()
+        ])
+        return ua
+
+    def random_all(self):
+        ua = random.choice([
+            self.random_PC(),
+            self.random_Mobile(),
+            self.random_weChat()
+        ])
+        return ua
 if __name__ == "__main__":
-    UAString = fake_UA_maker().wechat_iPhone()
-    print(UAString)
+    while(1):
+        UAString = fake_UA_maker().random_all()
+        print(UAString)
+        time.sleep(3)
     # print(random_Android_OS())
