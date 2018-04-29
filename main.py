@@ -5,7 +5,6 @@
 # @Site    : 
 # @File    : main.py
 
-
 import yaml
 import random
 import string
@@ -609,7 +608,7 @@ class fake_UA_maker:
         return ua
 if __name__ == "__main__":
     while(1):
-        UAString = fake_UA_maker().random_all()
+        UAString = fake_UA_maker().wechat()
         print(UAString)
-        time.sleep(3)
+        time.sleep(1)
     # print(random_Android_OS())
